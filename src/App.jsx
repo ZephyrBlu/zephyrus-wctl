@@ -32,6 +32,20 @@ const App = () => {
     }, []);
 
     useEffect(() => {
+        const matchupToRace = (matchup) => {
+            const mainRace = matchup.slice(0)[0];
+            switch (mainRace.toLowerCase()) {
+                case 'p':
+                    return 'protoss';
+                case 't':
+                    return 'terran';
+                case 'z':
+                    return 'zerg';
+                default:
+                    return null;
+            }
+        };
+
         const filterData = (data) => {
             const filtered = {};
             data.forEach((d) => {
@@ -44,6 +58,7 @@ const App = () => {
 
                     if (!filtered.hasOwnProperty(d.matchup)) {
                         filtered[d.matchup] = {
+                            race: matchupToRace(d.matchup),
                             wins: 0,
                             losses: 0,
                         };
@@ -76,6 +91,7 @@ const App = () => {
             if (winrateDisplayType === 'matchup') {
                 Object.entries(filtered).forEach(([matchup, values]) => {
                     filtered[matchup.split('').reverse().join('')] = {
+                        race: matchupToRace(matchup.split('').reverse().join('')),
                         wins: values.losses,
                         losses: values.wins,
                     }
@@ -85,7 +101,7 @@ const App = () => {
             console.log(filtered);
             const renderData = Object.entries(filtered).map(([name, values]) => ({
                 name,
-                race: winrateDisplayType === 'matchup' ? name.toLowerCase() : values.race.toLowerCase(),
+                race: values.race.toLowerCase(),
                 value: Number(((values.wins / (values.wins + values.losses)) * 100).toFixed(1)),
             }));
             console.log(renderData);

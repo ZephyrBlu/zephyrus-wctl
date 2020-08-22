@@ -8,20 +8,6 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
         zerg: 'hsl(270, 80%, 35%)',
     };
 
-    const matchupToRace = (matchup) => {
-        const mainRace = matchup.slice(0)[0];
-        switch (mainRace.toLowerCase()) {
-            case 'p':
-                return 'protoss';
-            case 't':
-                return 'terran';
-            case 'z':
-                return 'zerg';
-            default:
-                return null;
-        }
-    };
-
     return (
         <div class="WinrateSummary">
             <div class="WinrateSummary__header">
@@ -52,7 +38,7 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
             </div>
             <div class="WinrateSummary__winrate-data">
                 {data.map((d) => (
-                    <div class="WinrateSummary__data-point">
+                    <div key={`${d.name}-${d.race}-${d.value}`} class="WinrateSummary__data-point">
                         <h2 class="WinrateSummary__matchup">
                             {d.name}
                         </h2>
