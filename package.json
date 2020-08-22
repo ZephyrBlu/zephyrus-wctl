@@ -8,7 +8,9 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "preact": "^10"
+    "@tippyjs/react": "^4.1.0",
+    "preact": "^10",
+    "tippy.js": "^6.2.6"
   },
   "devDependencies": {
     "@neutrinojs/preact": "^9.3.0",

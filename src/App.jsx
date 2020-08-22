@@ -1,18 +1,27 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import WinrateSummary from './WinrateSummary';
+import WinrateGrid from './WinrateGrid';
 import './App.css';
 
 const App = () => {
-  const [name, setName] = useState('zephyrus-wctl');
+    const testData = [
+        { matchup: 'PvP', value: 20 },
+        { matchup: 'ZvP', value: 24 },
+        { matchup: 'TvP', value: 62 },
+    ];
 
-  return (
-    <div class="App">
-      <h1>
-        Welcome to
-        {name}
-      </h1>
-    </div>
-  );
+    return (
+        <div class="App">
+            <h1 class="App__title">
+                War Chest Team League
+            </h1>
+            <WinrateSummary
+                name="Winrate Summary"
+                data={testData}
+            />
+            <WinrateGrid />
+        </div>
+    );
 };
 
 export default App;

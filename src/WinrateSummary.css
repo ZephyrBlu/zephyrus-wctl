@@ -1,0 +1,100 @@
+.WinrateSummary {
+    margin: 40px 20px;
+    padding: 30px 20px 15px;
+    border: 2px solid hsl(210, 60%, 24%);
+    border-radius: 10px;
+}
+
+.WinrateSummary__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -50px 0 10px;
+    height: 40px;
+}
+
+.WinrateSummary__title {
+    display: flex;
+    align-items: center;
+    margin: -3px 0 0;
+    margin-right: 40px;
+    height: 100%;
+    width: max-content;
+    padding: 0 5px;
+    font-size: 24px;
+    background-color: var(--primary-dark-1);
+}
+
+.WinrateSummary__controls {
+    display: inline-flex;
+    position: relative;
+    height: 100%;
+    width: max-content;
+    padding: 0 5px;
+    font-size: 24px;
+    background-color: var(--primary-dark-1);
+    box-shadow: 0 0 0 2px var(--primary-light-3) inset;
+    border-radius: 20px;
+}
+
+.WinrateSummary__controls::before {
+    content: '';
+    top: 5px;
+    height: 30px;
+    width: 125px;
+    position: absolute;
+    background: var(--primary-light-2);
+    border-radius: 15px;
+}
+
+.WinrateSummary__control-option {
+    display: inline-block;
+    z-index: 1;
+    padding: 0;
+    margin: 10px 20px;
+    width: 85px;
+    border: none;
+    background-color: transparent;    
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.WinrateSummary__winrate-data {
+    display: grid;
+    grid-template: 1fr / max-content 1fr max-content;
+    grid-template-areas: 'matchup value-bar value';
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.WinrateSummary__matchup {
+    grid-area: matchup;
+    margin: 0;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.WinrateSummary__value-bar {
+    grid-area: value-bar;
+    display: inline;
+}
+
+.WinrateSummary__value {
+    grid-area: value;
+    margin: 0;
+    font-size: 16px;
+}
+
+.WinrateSummary__value-bar--protoss {
+    filter: drop-shadow(0 0 4px hsl(50, 80%, 45%));
+}
+
+.WinrateSummary__value-bar--zerg {
+    filter: drop-shadow(0 0 4px hsl(270, 80%, 35%));
+}
+
+.WinrateSummary__value-bar--terran {
+    filter: drop-shadow(0 0 4px hsl(15, 90%, 40%));
+}
