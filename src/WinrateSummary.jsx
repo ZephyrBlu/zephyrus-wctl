@@ -1,12 +1,7 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
 import './WinrateSummary.css';
 
-const WinrateSummary = ({ name, data }) => {
-    const [winrateDisplayType, setWinrateDisplayType] = useState('matchup');
-    const valueComparison = (a, b) => (b - a);
-    data.sort(valueComparison);
-
+const WinrateSummary = ({ data, displayType, setDisplayType }) => {
     const raceColours = {
         protoss: 'hsl(50, 80%, 45%)',
         terran: 'hsl(15, 90%, 40%)',
@@ -36,20 +31,20 @@ const WinrateSummary = ({ name, data }) => {
                 <div
                     class={`
                         WinrateSummary__controls
-                        ${winrateDisplayType === 'matchup'
+                        ${displayType === 'matchup'
                             ? 'WinrateSummary__controls--matchup'
                             : 'WinrateSummary__controls--player'}
                     `}
                 >
                     <button
                         class="WinrateSummary__control-option"
-                        onClick={() => setWinrateDisplayType('matchup')}
+                        onClick={() => setDisplayType('matchup')}
                     >
                         By Matchup
                     </button>
                     <button
                         class="WinrateSummary__control-option"
-                        onClick={() => setWinrateDisplayType('player')}
+                        onClick={() => setDisplayType('player')}
                     >
                         By Player
                     </button>
@@ -59,22 +54,31 @@ const WinrateSummary = ({ name, data }) => {
                 {data.map((d) => (
                     <div class="WinrateSummary__data-point">
                         <h2 class="WinrateSummary__matchup">
-                            {d.matchup}
+                            {d.name}
                         </h2>
                         <svg
-                            class={`WinrateSummary__value-bar WinrateSummary__value-bar--${matchupToRace(d.matchup)}`}
-                            viewBox="0 0 101 2"
+                            class={`WinrateSummary__value-bar WinrateSummary__value-bar--${d.race}`}
+                            viewBox="0 0 102 2"
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <line
                                 x1="1"
                                 y1="1"
-                                x2={d.value}
+                                x2="1"
                                 y2="1"
-                                stroke={raceColours[matchupToRace(d.matchup)]}
+                                stroke={raceColours[d.race]}
                                 stroke-width={0.5}
                                 stroke-linecap="round"
-                            />
+                            >
+                                <animate
+                                    attributeName="x2"
+                                    begin=".1s"
+                                    from="1"
+                                    to={d.value + 1}
+                                    dur=".3s"
+                                    fill="freeze"
+                                />
+                            </line>
                         </svg>
                         <h2 class="WinrateSummary__value">
                             {d.value}%

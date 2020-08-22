@@ -86,8 +86,10 @@
 
 .WinrateSummary__matchup {
     grid-area: matchup;
+    display: inline-block;
     margin: 0;
     margin-right: 5px;
+    width: 100px;
     font-size: 16px;
     font-weight: 400;
 }
