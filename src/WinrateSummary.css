@@ -1,5 +1,5 @@
 .WinrateSummary {
-    margin: 40px 20px;
+    margin: 50px 20px;
     padding: 30px 20px 15px;
     border: 2px solid hsl(210, 60%, 24%);
     border-radius: 10px;
@@ -21,11 +21,11 @@
     height: 100%;
     width: max-content;
     padding: 0 5px;
-    font-size: 24px;
+    font-size: 28px;
     background-color: var(--primary-dark-1);
 }
 
-.WinrateSummary__controls {
+.WinrateSummary__display-controls {
     display: inline-flex;
     position: relative;
     height: 100%;
@@ -37,7 +37,7 @@
     border-radius: 20px;
 }
 
-.WinrateSummary__controls::before {
+.WinrateSummary__display-controls::before {
     content: '';
     top: 5px;
     height: 30px;
@@ -45,9 +45,14 @@
     position: absolute;
     background: var(--primary-light-2);
     border-radius: 15px;
+    transition: .3s;
 }
 
-.WinrateSummary__control-option {
+.WinrateSummary__display-controls--player::before {
+    transform: translateX(125px);
+}
+
+.WinrateSummary__display-control-option {
     display: inline-block;
     z-index: 1;
     padding: 0;
@@ -58,10 +63,20 @@
     color: var(--text);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
+}
+
+.WinrateSummary__display-control-option:hover,
+.WinrateSummary__display-control-option:focus {
+    cursor: pointer;
+    outline: none;
 }
 
 .WinrateSummary__winrate-data {
+    margin-top: 20px;
+}
+
+.WinrateSummary__data-point {
     display: grid;
     grid-template: 1fr / max-content 1fr max-content;
     grid-template-areas: 'matchup value-bar value';
@@ -74,6 +89,7 @@
     margin: 0;
     margin-right: 5px;
     font-size: 16px;
+    font-weight: 400;
 }
 
 .WinrateSummary__value-bar {
@@ -85,6 +101,7 @@
     grid-area: value;
     margin: 0;
     font-size: 16px;
+    font-weight: 400;
 }
 
 .WinrateSummary__value-bar--protoss {
