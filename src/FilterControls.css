@@ -1,32 +1,27 @@
 .FilterControls {
-    padding: 20px;
-    border: 2px solid hsl(210, 60%, 24%);
-    border-radius: 10px;
+    display: inline-flex;
 }
 
 .FilterControls__title {
-    display: flex;
-    align-items: center;
-    margin: -40px 0 0;
+    display: inline-block;
+    margin: 0;
     margin-right: 40px;
     height: 100%;
     width: max-content;
     padding: 0 5px;
-    font-size: 28px;
+    font-size: 24px;
     background-color: var(--primary-dark-1);
 }
 
 .FilterControls__controls {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
+    display: inline-block;
 }
 
 .FilterControls__control-option {
-    margin: 0 10px;
+    margin: 0 40px;
     padding: 5px 8px;
-    height: 36px;
-    width: 120px;
+    height: 32px;
+    width: 80px;
     border: none;
     border-radius: 18px;
     background-color: var(--primary-light-2);

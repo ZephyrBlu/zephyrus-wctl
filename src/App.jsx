@@ -1,6 +1,5 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
-import FilterControls from './FilterControls';
 import WinrateSummary from './WinrateSummary';
 import './App.css';
 
@@ -17,10 +16,6 @@ const App = () => {
             <h1 class="App__title">
                 War Chest Team League
             </h1>
-            <FilterControls
-                winrateData={winrateData}
-                setWinrateData={setWinrateData}
-            />
             <WinrateSummary data={winrateData} />
         </div>
     );
