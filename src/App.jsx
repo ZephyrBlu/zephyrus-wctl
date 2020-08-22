@@ -1,6 +1,6 @@
 import { h } from 'preact';
+import FilterControls from './FilterControls';
 import WinrateSummary from './WinrateSummary';
-import WinrateGrid from './WinrateGrid';
 import './App.css';
 
 const App = () => {
@@ -15,11 +15,11 @@ const App = () => {
             <h1 class="App__title">
                 War Chest Team League
             </h1>
+            <FilterControls />
             <WinrateSummary
                 name="Winrate Summary"
                 data={testData}
             />
-            <WinrateGrid />
         </div>
     );
 };
