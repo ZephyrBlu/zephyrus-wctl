@@ -31,24 +31,24 @@ const WinrateSummary = ({ name, data }) => {
         <div class="WinrateSummary">
             <div class="WinrateSummary__header">
                 <h1 class="WinrateSummary__title">
-                    {name}
+                    Winrate Summary
                 </h1>
                 <div
                     class={`
-                        WinrateSummary__display-controls
+                        WinrateSummary__controls
                         ${winrateDisplayType === 'matchup'
-                            ? 'WinrateSummary__display-controls--matchup'
-                            : 'WinrateSummary__display-controls--player'}
+                            ? 'WinrateSummary__controls--matchup'
+                            : 'WinrateSummary__controls--player'}
                     `}
                 >
                     <button
-                        class="WinrateSummary__display-control-option"
+                        class="WinrateSummary__control-option"
                         onClick={() => setWinrateDisplayType('matchup')}
                     >
                         By Matchup
                     </button>
                     <button
-                        class="WinrateSummary__display-control-option"
+                        class="WinrateSummary__control-option"
                         onClick={() => setWinrateDisplayType('player')}
                     >
                         By Player
@@ -72,7 +72,7 @@ const WinrateSummary = ({ name, data }) => {
                                 x2={d.value}
                                 y2="1"
                                 stroke={raceColours[matchupToRace(d.matchup)]}
-                                strokeWidth={0.5}
+                                stroke-width={0.5}
                                 stroke-linecap="round"
                             />
                         </svg>

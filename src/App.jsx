@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { useState } from 'preact/hooks';
 import FilterControls from './FilterControls';
 import WinrateSummary from './WinrateSummary';
 import './App.css';
@@ -9,17 +10,18 @@ const App = () => {
         { matchup: 'ZvP', value: 24 },
         { matchup: 'TvP', value: 62 },
     ];
+    const [winrateData, setWinrateData] = useState(testData);
 
     return (
         <div class="App">
             <h1 class="App__title">
                 War Chest Team League
             </h1>
-            <FilterControls />
-            <WinrateSummary
-                name="Winrate Summary"
-                data={testData}
+            <FilterControls
+                winrateData={winrateData}
+                setWinrateData={setWinrateData}
             />
+            <WinrateSummary data={winrateData} />
         </div>
     );
 };
