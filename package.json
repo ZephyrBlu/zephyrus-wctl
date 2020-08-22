@@ -1,0 +1,20 @@
+{
+  "name": "zephyrus-wctl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "preact": "^10"
+  },
+  "devDependencies": {
+    "@neutrinojs/preact": "^9.3.0",
+    "neutrino": "^9.3.0",
+    "webpack": "^4",
+    "webpack-cli": "^3",
+    "webpack-dev-server": "^3"
+  }
+}
