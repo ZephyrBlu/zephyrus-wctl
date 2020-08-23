@@ -119,9 +119,12 @@
 
 .WinrateSummary__value {
     grid-area: value;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
     margin: 0;
-    width: 45px;
-    text-align: center;
+    width: 100px;
     font-size: 16px;
     font-weight: 400;
 }

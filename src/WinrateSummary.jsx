@@ -54,7 +54,7 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
             </div>
             <div className="WinrateSummary__winrate-data">
                 {data.map((d, index) => (
-                    <div key={`${d.name}-${d.race}-${d.value}`} className="WinrateSummary__data-point">
+                    <div key={`${d.name}-${d.race}-${d.values[0]}`} className="WinrateSummary__data-point">
                         <h2 className={`WinrateSummary__value-name WinrateSummary__value-name--${displayType}`}>
                             {d.name}
                         </h2>
@@ -64,19 +64,19 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
-                                data-value={d.value + 1}
+                                data-value={d.values[0] + 1}
                                 data-delay={100 + (70 * (index))}
-                                d={`M1,1 L${d.value + 1},1`}
+                                d={`M1,1 L${d.values[0] + 1},1`}
                                 className={`WinrateSummary__value-bar WinrateSummary__value-bar--${d.race}`}
                                 stroke={raceColours[d.race]}
                                 stroke-width={0.5} // eslint-disable-line react/no-unknown-property
                                 stroke-linecap="round" // eslint-disable-line react/no-unknown-property
-                                stroke-dasharray={d.value + 1} // eslint-disable-line react/no-unknown-property
-                                stroke-dashoffset={d.value + 1} // eslint-disable-line react/no-unknown-property
+                                stroke-dasharray={d.values[0] + 1} // eslint-disable-line react/no-unknown-property
+                                stroke-dashoffset={d.values[0] + 1} // eslint-disable-line react/no-unknown-property
                             />
                         </svg>
                         <h2 className="WinrateSummary__value">
-                            {d.value}%
+                            {d.values[0]}%<small>({d.values[1]}/{d.values[2]})</small>
                         </h2>
                     </div>
                 ))}

@@ -78,12 +78,16 @@ const useWinrates = () => {
             });
 
             const renderData = {};
-            const valueComparison = (a, b) => (b.value - a.value);
+            const valueComparison = (a, b) => (b.values[0] - a.values[0]);
             Object.entries(filtered).forEach(([displayType, typeData]) => {
                 renderData[displayType] = Object.entries(typeData).map(([name, values]) => ({
                     name,
                     race: values.race.toLowerCase(),
-                    value: Number(((values.wins / (values.wins + values.losses)) * 100).toFixed(1)),
+                    values: [
+                        Number(((values.wins / (values.wins + values.losses)) * 100).toFixed(1)),
+                        values.wins,
+                        values.wins + values.losses,
+                    ],
                 }));
                 renderData[displayType].sort(valueComparison);
             });
