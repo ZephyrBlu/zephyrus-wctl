@@ -1,6 +1,34 @@
 import json
+import traceback
 from pathlib import Path
 from zephyrus_sc2_parser import parse_replay
+
+PLAYER_ALIASES = {
+    'dpgparting': 'PartinG',
+    'parting': 'PartinG',
+    'liquidclem': 'Clem',
+    'uwuthermal': 'uThermal',
+    'liquidthermy': 'uThermal',
+    'dpgcure': 'Cure',
+    'agoelazer': 'Elazer',
+    'afreecadrg': 'DongRaeGu',
+    'drg': 'DongRaeGu',
+    'tyty': 'TY',
+    'youtubety': 'TY',
+    'liquidmana': 'MaNa',
+    'jinairrogue': 'Rogue',
+    'neeblet': 'Neeb',
+    'soul': 'souL',
+    'heromarine': 'HeRoMaRinE',
+    'sortof': 'SortOf',
+    'ptitdrogo': 'PtitDrogo',
+    'innovation': 'INnoVation',
+    'soo': 'soO',
+    'time': 'TIME',
+    'special': 'SpeCial',
+    'ragnarok': 'RagnaroK',
+    'supernova': 'SuperNova',
+}
 
 replays = Path('replays')
 total_files = 0
@@ -31,7 +59,7 @@ for count, replay in enumerate(replays.iterdir()):
             ])
             print('Successfully parsed replay file\n')
         except Exception as e:
-            exceptions.append(e)
+            exceptions.append(traceback.format_exc())
             print(f'An error occured during parsing: {e}\n')
     else:
         print('Skipped non-file object\n')
@@ -48,7 +76,10 @@ for p1, p2, winner in replay_data:
         if 'lllllllllll' in name:
             return 'sOs'
         else:
-            return name.split('>')[::-1][0]
+            temp_name = name.split('>')[::-1][0].capitalize()
+            if temp_name.lower() in PLAYER_ALIASES:
+                return PLAYER_ALIASES[temp_name.lower()]
+            return temp_name
 
     winner['name'] = clean_name(winner['name'])
 
