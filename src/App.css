@@ -66,6 +66,22 @@ body {
     margin: 0 0 40px;
 }
 
+.App__title a,
+.App__title a:visited {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.App__title:hover {
+    text-decoration: underline;
+}
+
 h1, h2, h3, h4, h5 {
     font-weight: 300;
+}
+
+@media(max-width: 1200px) {
+    .App {
+        width: 90%;
+    }
 }

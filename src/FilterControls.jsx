@@ -14,14 +14,14 @@ const FilterControls = ({ winrateData, setWinrateData }) => {
     );
 
     return (
-        <div class="FilterControls">
-            <h1 class="FilterControls__title">
+        <div className="FilterControls">
+            <h1 className="FilterControls__title">
                 Match Stage
             </h1>
-            <div class="FilterControls__controls">
+            <div className="FilterControls__controls">
                 {matchStages.map((stage) => (
                     <button
-                        class="FilterControls__control-option"
+                        className="FilterControls__control-option"
                         onClick={() => filterData(stage)}
                     >
                         {capitalize(stage)}

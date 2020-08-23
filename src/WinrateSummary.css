@@ -17,7 +17,6 @@
     display: flex;
     align-items: center;
     margin: -3px 0 0;
-    margin-right: 40px;
     height: 100%;
     width: max-content;
     padding: 0 5px;
@@ -106,14 +105,72 @@
     font-weight: 400;
 }
 
-.WinrateSummary__value-bar--protoss {
+.WinrateSummary__value-bar-wrapper--protoss {
     filter: drop-shadow(0 0 4px hsl(50, 80%, 45%));
 }
 
-.WinrateSummary__value-bar--zerg {
+.WinrateSummary__value-bar-wrapper--zerg {
     filter: drop-shadow(0 0 4px hsl(270, 80%, 35%));
 }
 
-.WinrateSummary__value-bar--terran {
+.WinrateSummary__value-bar-wrapper--terran {
     filter: drop-shadow(0 0 4px hsl(15, 90%, 40%));
+}
+
+@media(max-width: 1200px) {
+    .WinrateSummary__value-bar {
+        stroke-width: 1;
+    }
+}
+
+@media(max-width: 1000px) {
+    .WinrateSummary__title {
+        font-size: 24px;
+    }
+
+    .WinrateSummary__controls::before {
+        width: 95px;
+    }
+
+    .WinrateSummary__controls--player::before {
+        transform: translateX(95px);
+    }
+
+    .WinrateSummary__control-option {
+        font-size: 14px;
+        width: 75px;
+        margin: 10px;
+    }
+}
+
+@media(max-width: 800px) {
+    .WinrateSummary__value-bar {
+        stroke-width: 1.5;
+    }
+}
+
+@media(max-width: 600px) {
+    .WinrateSummary__title {
+        font-size: 18px;
+    }
+
+    .WinrateSummary__controls::before {
+        width: 77px;
+    }
+
+    .WinrateSummary__controls--player::before {
+        transform: translateX(77px);
+    }
+
+    .WinrateSummary__control-option {
+        font-size: 12px;
+        width: 65px;
+        margin: 6px;
+    }
+}
+
+@media(max-width: 500px) {
+    .WinrateSummary__value-bar {
+        stroke-width: 2;
+    }
 }
