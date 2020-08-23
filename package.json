@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src"
   },
   "dependencies": {
     "@tippyjs/react": "^4.1.0",
@@ -13,7 +14,9 @@
     "tippy.js": "^6.2.6"
   },
   "devDependencies": {
+    "@neutrinojs/airbnb": "^9.3.0",
     "@neutrinojs/preact": "^9.3.0",
+    "eslint": "^7.7.0",
     "neutrino": "^9.3.0",
     "webpack": "^4",
     "webpack-cli": "^3",
