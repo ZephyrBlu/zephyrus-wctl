@@ -75,7 +75,7 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
                                 stroke-dashoffset={d.values[0] + 1} // eslint-disable-line react/no-unknown-property
                             />
                         </svg>
-                        <h2 className="WinrateSummary__value">
+                        <h2 className={`WinrateSummary__values WinrateSummary__values--${displayType}`}>
                             {d.values[0]}%<small>({d.values[1]}/{d.values[2]})</small>
                         </h2>
                     </div>

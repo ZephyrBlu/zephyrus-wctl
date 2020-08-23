@@ -93,7 +93,7 @@
 }
 
 .WinrateSummary__value-name--matchup {
-    width: 30px;
+    width: 32px;
 }
 
 .WinrateSummary__value-name--player {
@@ -117,7 +117,7 @@
     filter: drop-shadow(0 0 4px hsl(15, 90%, 40%));
 }
 
-.WinrateSummary__value {
+.WinrateSummary__values {
     grid-area: value;
     display: flex;
     align-items: center;
@@ -174,7 +174,17 @@
         margin: 6px;
     }
 
+    .WinrateSummary__value-name--player {
+        font-size: 14px;
+        width: 85px;
+    }
+
     .WinrateSummary__value-bar {
         stroke-width: 2;
+    }
+
+    .WinrateSummary__values--player {
+        font-size: 14px;
+        width: 85px;
     }
 }
