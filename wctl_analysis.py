@@ -59,7 +59,10 @@ for count, replay in enumerate(replays.iterdir()):
             ])
             print('Successfully parsed replay file\n')
         except Exception as e:
-            exceptions.append(traceback.format_exc())
+            exceptions.append({
+                'file': replay.name,
+                'exception': traceback.format_exc()
+            })
             print(f'An error occured during parsing: {e}\n')
     else:
         print('Skipped non-file object\n')
@@ -98,3 +101,6 @@ with open('wctl_matches.json', 'w', encoding='utf-8') as wctl_data:
 
 for e in exceptions:
     print(e)
+
+with open('parsing_errors.json', 'w', encoding='utf-8') as errors:
+    json.dump({'errors': exceptions}, errors, indent=4, ensure_ascii=True)
