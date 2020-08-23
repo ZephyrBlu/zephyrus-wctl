@@ -37,7 +37,7 @@ module.exports = {
     }),
     preact({
       html: {
-        title: 'zephyrus-wctl'
+        title: 'SC2 War Chest Team League | Zephyrus'
       },
       publicPath: '/',
       style: {
@@ -50,6 +50,11 @@ module.exports = {
     }),
     (neutrino) => {
       neutrino.config.output.filename('[name].[hash].js');
+      neutrino.config.module
+        .rule('postcss')
+          .test(/\.css$/)
+          .use('postcss')
+            .loader('postcss-loader');
     },
   ],
 };
