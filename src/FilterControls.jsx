@@ -5,7 +5,6 @@ const FilterControls = ({ winrateData, setWinrateData }) => {
     const matchStages = ['all', 'early', 'mid', 'late'];
 
     const filterData = (stage) => {
-        console.log(stage);
         setWinrateData(winrateData);
     };
 

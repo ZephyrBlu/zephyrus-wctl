@@ -83,26 +83,26 @@
     margin-bottom: 5px;
 }
 
-.WinrateSummary__matchup {
+.WinrateSummary__value-name {
     grid-area: matchup;
     display: inline-block;
     margin: 0;
     margin-right: 5px;
-    width: 100px;
     font-size: 16px;
     font-weight: 400;
 }
 
-.WinrateSummary__value-bar {
+.WinrateSummary__value-name--matchup {
+    width: 30px;
+}
+
+.WinrateSummary__value-name--player {
+    width: 100px;
+}
+
+.WinrateSummary__value-bar-wrapper {
     grid-area: value-bar;
     display: inline;
-}
-
-.WinrateSummary__value {
-    grid-area: value;
-    margin: 0;
-    font-size: 16px;
-    font-weight: 400;
 }
 
 .WinrateSummary__value-bar-wrapper--protoss {
@@ -117,10 +117,13 @@
     filter: drop-shadow(0 0 4px hsl(15, 90%, 40%));
 }
 
-@media(max-width: 1200px) {
-    .WinrateSummary__value-bar {
-        stroke-width: 1;
-    }
+.WinrateSummary__value {
+    grid-area: value;
+    margin: 0;
+    width: 45px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 @media(max-width: 1000px) {
@@ -145,7 +148,7 @@
 
 @media(max-width: 800px) {
     .WinrateSummary__value-bar {
-        stroke-width: 1.5;
+        stroke-width: 1;
     }
 }
 
@@ -167,9 +170,7 @@
         width: 65px;
         margin: 6px;
     }
-}
 
-@media(max-width: 500px) {
     .WinrateSummary__value-bar {
         stroke-width: 2;
     }

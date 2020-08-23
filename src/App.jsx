@@ -17,7 +17,7 @@ const App = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    War Chest Team League
+                    SC2 War Chest Team League
                 </a>
             </h1>
             {winrateData && // eslint-disable-line operator-linebreak

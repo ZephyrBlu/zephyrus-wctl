@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import './WinrateSummary.css';
+import { useEffect } from 'preact/hooks';
 
 const WinrateSummary = ({ data, displayType, setDisplayType }) => {
     const raceColours = {
@@ -7,6 +8,21 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
         terran: 'hsl(15, 90%, 40%)',
         zerg: 'hsl(270, 80%, 35%)',
     };
+
+    useEffect(() => {
+        const bars = [...document.getElementsByClassName('WinrateSummary__value-bar')];
+        bars.forEach((bar) => {
+            bar.animate([
+                { strokeDashoffset: Number(bar.dataset.value) },
+                { strokeDashoffset: 0 },
+            ], {
+                delay: Number(bar.dataset.delay),
+                duration: 800,
+                easing: 'cubic-bezier(.15, .2, .2, 1)',
+                fill: 'forwards',
+            });
+        });
+    }, [displayType]);
 
     return (
         <div className="WinrateSummary">
@@ -39,7 +55,7 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
             <div className="WinrateSummary__winrate-data">
                 {data.map((d, index) => (
                     <div key={`${d.name}-${d.race}-${d.value}`} className="WinrateSummary__data-point">
-                        <h2 className="WinrateSummary__matchup">
+                        <h2 className={`WinrateSummary__value-name WinrateSummary__value-name--${displayType}`}>
                             {d.name}
                         </h2>
                         <svg
@@ -47,25 +63,17 @@ const WinrateSummary = ({ data, displayType, setDisplayType }) => {
                             viewBox="0 0 102 2"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <line
+                            <path
+                                data-value={d.value + 1}
+                                data-delay={100 + (70 * (index))}
+                                d={`M1,1 L${d.value + 1},1`}
                                 className={`WinrateSummary__value-bar WinrateSummary__value-bar--${d.race}`}
-                                x1="1"
-                                y1="1"
-                                x2="1"
-                                y2="1"
                                 stroke={raceColours[d.race]}
                                 stroke-width={0.5} // eslint-disable-line react/no-unknown-property
                                 stroke-linecap="round" // eslint-disable-line react/no-unknown-property
-                            >
-                                <animate
-                                    attributeName="x2"
-                                    begin={`${0.1 + (0.05 * (index + 1))}s`}
-                                    from="1"
-                                    to={d.value + 1}
-                                    dur=".3s"
-                                    fill="freeze"
-                                />
-                            </line>
+                                stroke-dasharray={d.value + 1} // eslint-disable-line react/no-unknown-property
+                                stroke-dashoffset={d.value + 1} // eslint-disable-line react/no-unknown-property
+                            />
                         </svg>
                         <h2 className="WinrateSummary__value">
                             {d.value}%

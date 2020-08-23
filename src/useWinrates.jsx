@@ -12,7 +12,6 @@ const useWinrates = () => {
                 url = 'http://localhost:5000/';
             }
             const data = await fetch(`${url}wctl_matches.json`).then((res) => res.json());
-            console.log(data);
             return data.data;
         };
 
@@ -78,11 +77,9 @@ const useWinrates = () => {
                 };
             });
 
-            console.log(filtered);
             const renderData = {};
             const valueComparison = (a, b) => (b.value - a.value);
             Object.entries(filtered).forEach(([displayType, typeData]) => {
-                console.log('TYPE DATA', typeData);
                 renderData[displayType] = Object.entries(typeData).map(([name, values]) => ({
                     name,
                     race: values.race.toLowerCase(),
@@ -90,18 +87,15 @@ const useWinrates = () => {
                 }));
                 renderData[displayType].sort(valueComparison);
             });
-            console.log(renderData);
             return renderData;
         };
 
         const asyncWrapper = async () => {
             const rawData = await fetchWinrateData();
-            console.log('RAW', rawData);
             const processedData = filterData(rawData);
-            console.log('PROCESSED', processedData);
             setWinrateData(processedData);
         };
-        asyncWrapper();
+        setTimeout(asyncWrapper, 500);
     }, []);
 
     return winrateData;
