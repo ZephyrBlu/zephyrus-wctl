@@ -1,7 +1,5 @@
-const path = require('path');
 const preact = require('@neutrinojs/preact');
 const airbnb = require('@neutrinojs/airbnb');
-const styles = require('@neutrinojs/style-loader');
 
 module.exports = {
   options: {
@@ -36,10 +34,6 @@ module.exports = {
       }
     }),
     preact({
-      html: {
-        title: 'SC2 War Chest Team League | Zephyrus'
-      },
-      publicPath: '/',
       style: {
         extract: {
           plugin: {
@@ -47,14 +41,24 @@ module.exports = {
           },
         },
       },
+      html: {
+        title: 'SC2 War Chest Team League | Zephyrus',
+        favicon: 'favicon.ico',
+      },
     }),
     (neutrino) => {
-      neutrino.config.output.filename('[name].[hash].js');
-      neutrino.config.module
-        .rule('postcss')
-          .test(/\.css$/)
-          .use('postcss')
-            .loader('postcss-loader');
+      neutrino.config
+        .entry('index')
+          .add('./src/App.jsx')
+          .end()
+        .output
+          .filename('[name].[hash].js')
+          .end()
+        .module
+          .rule('postcss')
+            .test(/\.css$/)
+            .use('postcss')
+              .loader('postcss-loader');
     },
   ],
 };
